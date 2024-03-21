@@ -41,6 +41,7 @@ body {
 .wrapper .screen {
     flex: 1;
     min-width: 100%;
+    transition: all 0.3s;
 }
 
 .wrapper.show-category .home-screen {
@@ -65,6 +66,7 @@ body {
     transform: translate(-50%);
     border-radius: 0 0 40% 40%;
     background-color: #7373b5;
+    transition: all 0.3s;
 }
 
 .head-wrapper {
@@ -191,4 +193,36 @@ body {
     width: 32px;
     cursor: pointer;
     /* opacity: 0.6; */
+}
+
+/* tasks screen */
+
+.category-screen .head-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#bx-arrow-back {
+    font-size: 32px;
+    width: 32px;
+    cursor: pointer;
+    color: #2e2e2e;
+}
+
+.category-details {
+    padding: 0 30px;
+    margin-top: 112px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.category-details img {
+    width: 120px;
+    font-size: 16px;
+}
+
+.category-details .details p {
+    opacity: 0.6;
 }
