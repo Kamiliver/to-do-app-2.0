@@ -226,3 +226,119 @@ body {
 .category-details .details p {
     opacity: 0.6;
 }
+
+/* tasks */
+.tasks-wrapper {
+    padding: 0 30px;
+    margin-top: 16px;
+    height: calc(100% - 192px);
+    padding-bottom: 20px;
+    overflow: auto;
+}
+
+.tasks {
+    padding-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.task-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task {
+    display: flex;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    width: max-content;
+    cursor: pointer;
+}
+
+.task input {
+    display: none;
+}
+
+.task .checkmark {
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+    border: 1px solid #2e2e2e;
+    align-items: center;
+    justify-content: center;
+}
+
+#bx-check {
+    width: 16px;
+    color: #2e2e2e;
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.task:hover .checkmark #bx-check {
+    opacity: 1;
+}
+
+.task input:checked~.checkmark {
+    background-color: #2e2e2e;
+}
+
+.task input:checked~.checkmark #bx-check {
+    opacity: 1;
+    color: aliceblue;
+}
+
+.task input:checked~p {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.task-wrapper .delete {
+    min-width: 32px;
+    height: 32px;
+    padding: 8px;
+    border-radius: 50%;
+    color: #2e2e2e;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.031);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+}
+
+.task-wrapper:hover .delete {
+    visibility: visible;
+    opacity: 1;
+}
+
+.task-wrapper .delete:hover {
+    color: red;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* add task */
+.add-task-btn {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #7373b5;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+#bx-plus {
+    font-size: 45px;
+}
+
+.add-task-btn:hover {
+    transform: scale(1.1);
+}
