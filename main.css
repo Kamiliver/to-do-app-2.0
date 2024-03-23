@@ -335,10 +335,114 @@ body {
     transition: all 0.3s;
 }
 
+.add-task-btn.active {
+    z-index: 1;
+    bottom: 320px;
+    transform: rotate(45deg);
+}
+
 #bx-plus {
     font-size: 45px;
 }
 
 .add-task-btn:hover {
     transform: scale(1.1);
+}
+
+.add-task {
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    padding: 20px 30px;
+    transition: all 0.3s;
+}
+
+.add-task.active {
+    bottom: 0;
+}
+
+.add-task .heading {
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group input,
+.input-group label {
+    display: block;
+    width: 100%;
+}
+
+.input-group input, 
+.input-group select {
+    width: 100%;
+    border: 1px solid aquamarine;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.input-group label {
+    width: max-content;
+    padding: 0 5px;
+    margin-top: 5px;
+    font-family: 14px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.btns {
+    display: flex;
+    gap: 16px;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.btns button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btns button.add-btn {
+    background-color: #7373b5;
+    color: #2e2e2e;
+}
+
+.add-task-backdrop {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 135%;
+    height: 320px;
+    border-radius: 50% 50% 0 0;
+    background-color: aquamarine;
+}
+
+.black-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+    background-color: #00000023;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+}
+
+.black-backdrop.active {
+    opacity: 1;
+    visibility: visible;
 }
