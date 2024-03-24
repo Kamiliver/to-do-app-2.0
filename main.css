@@ -236,6 +236,13 @@ body {
     overflow: auto;
 }
 
+.no-task {
+    margin-top: 0 30px;
+    text-align: center;
+    font-size: 24px;
+    opacity: 0.6;
+}
+
 .tasks {
     padding-top: 16px;
     display: flex;
@@ -404,6 +411,7 @@ body {
 }
 
 .btns button {
+    z-index: 2;
     padding: 10px 20px;
     border-radius: 5px;
     border: none;

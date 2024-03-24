@@ -11,7 +11,7 @@
 </head>
 <body>
 
-    <div class="wrapper">
+    <div class="wrapper show-category">
         <div class="screen-backdrop"></div>
         <div class="screen home-screen">
             <div class="head-wrapper">
@@ -21,7 +21,7 @@
                 <div class="welcome">
                     <div class="content">
                         <h1>Hello, <input type="text" id="name" placeholder="Name here"></h1>
-                        <p>Today you have 5 tasks</p>
+                        <p>Today you have <span class="totalTasks">5</span> tasks</p>
                     </div>
                     <div class="img">
                         <img src="images/young-man-removebg-preview.png" alt="">
@@ -166,7 +166,6 @@
             <div class="input-group">
                 <label for="category-select">Category</label>
                 <select name="" id="category-select">
-                    <option value="personal">Personal</option>
                 </select>
             </div>
             <div class="btns">
