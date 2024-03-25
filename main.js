@@ -306,3 +306,24 @@ categories.forEach((category) => {
 getLocal();
 calculateTotal();
 renderTasks();
+
+// const recognition = new webkitSpeechRecognition(); // Initialize SpeechRecognition object
+// recognition.continuous = false; // Set continuous to false to stop recognition after a single result
+
+// const startSpeechRecognition = () => {
+//   recognition.start(); // Start speech recognition
+// }
+
+// // Event listener for when speech recognition returns a result
+// recognition.onresult = (event) => {
+//   const transcript = event.results[0][0].transcript.trim(); // Get the recognized text
+//   taskInput.value = transcript; // Set the recognized text to the task input field
+// }
+
+// // Event listener for when speech recognition ends
+// recognition.onend = () => {
+//   recognition.stop(); // Stop speech recognition
+// }
+
+// // Event listener for the add task button to start speech recognition
+// addTaskBtn.addEventListener("click", startSpeechRecognition);
