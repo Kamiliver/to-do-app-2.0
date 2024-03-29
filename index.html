@@ -161,8 +161,13 @@
             <h1 class="heading">Add Task</h1>
             <div class="input-group">
                 <label for="task-input">Task</label>
-                <input type="text" id="task-input" required>
-            </div>
+                <div class="input-container">
+                    <input type="text" id="task-input" placeholder="Add a new task..." required>
+                    <i class="bx bx-microphone" id="speech-icon"></i>
+                </div>
+                
+                <!-- <input type="text" id="task-input" required/><i class="bx bx-microphone" id="speech-icon"></i>
+            </div> -->
             <div class="input-group">
                 <label for="category-select">Category</label>
                 <select name="" id="category-select"></select>

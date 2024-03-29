@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900);
+@import url("https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900");
 
 * {
     margin: 0;
@@ -401,6 +401,39 @@ body {
     font-family: 14px;
     color: #666;
     margin-bottom: 5px;
+    gap: 30px;
+}
+
+.input-container {
+    position: relative;
+}
+
+.input-container input::placeholder {
+    font-size: 18px;
+    font-weight: 550;
+}
+
+#task-input {
+    padding-top: 30px; /* Adjust according to the size of the icon */
+}
+
+#speech-icon {
+    position: absolute;
+    top: 30%; /* Adjust to position the icon above the input field */
+    left: 90%;
+    right: 0;
+    bottom: 0;
+    font-size: 30px;
+    color: #5656b0;
+    cursor: pointer;/* Adjust to position the icon horizontally */
+}
+
+#speech-icon:hover {
+    transform: scale(1.1);
+}
+
+#speech-icon.clicked {
+    animation: pulse 0.5s ease;
 }
 
 .btns {
@@ -453,4 +486,16 @@ body {
 .black-backdrop.active {
     opacity: 1;
     visibility: visible;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.8);
+    }
+    100% {
+        transform: scale(1);
+    }
 }

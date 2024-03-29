@@ -1,3 +1,16 @@
+window.addEventListener("load", () => {
+  const nameInput = document.querySelector("#name");
+
+  const username = localStorage.getItem("username") || "";
+
+  nameInput.value = username;
+
+    nameInput.addEventListener("change", e => {
+        localStorage.setItem("username", e.target.value);
+    })
+  });
+
+
 const wrapper = document.querySelector(".wrapper");
 const menuBtn = document.querySelector(".menu-btn");
 const backBtn = document.querySelector(".back-btn");
@@ -81,25 +94,25 @@ let categories = [
       completed: false,
     },
     {
-      id: 10,
+      id: 6,
       task: "Write in a journal",
       category: "Personal",
       completed: false,
     },
     {
-      id: 11,
+      id: 7,
       task: "Send follow-up emails",
       category: "Work",
       completed: false,
     },
     {
-      id: 12,
+      id: 8,
       task: "Work on a coding side project",
       category: "Coding",
       completed: false,
     },
     {
-      id: 13,
+      id: 9,
       task: "Try a new healthy recipe",
       category: "Health",
       completed: false,
@@ -161,41 +174,41 @@ const renderCategories = () => {
             div.addEventListener("click", () => {
                 wrapper.classList.toggle("show-category");
                 selectedCategory = category;
-        categoryTitle.innerHTML = category.title;
-        categoryImg.src = `images/${category.img}`;
-        calculateTotal();
+                categoryTitle.innerHTML = category.title;
+                categoryImg.src = `images/${category.img}`;
+                calculateTotal();
         // remember tasks when category change
-        renderTasks();
-    });
+                renderTasks();
+             });
     
-    div.innerHTML = `
-    <div class="left">
-    <img src="images/${category.img}"
-    alt="${category.title}"
-    />
-    <div class="content">
-    <h1>${category.title}</h1>
-    <p>${categoryTasks.length} Tasks</p>
-    </div>
-    </div>
-    <div class="options">
-    <div class="toggle-btn">
-    <i class='bx bx-dots-vertical-rounded' id="bx-dots-vertical-rounded"></i>
-    </div>
-    </div>
-    `;
+             div.innerHTML = `
+                 <div class="left">
+                     <img src="images/${category.img}"
+                       alt="${category.title}"
+                        />
+                     <div class="content">
+                         <h1>${category.title}</h1>
+                         <p>${categoryTasks.length} Tasks</p>
+                     </div>
+                   </div>
+                   <div class="options">
+                       <div class="toggle-btn">
+                           <i class='bx bx-dots-vertical-rounded' id="bx-dots-vertical-rounded"></i>
+                       </div>
+                   </div>
+              `;
     
-    categoriesContainer.appendChild(div);
-});
-};
+              categoriesContainer.appendChild(div);
+          });
+      };
 
 const tasksContainer = document.querySelector(".tasks");
 
 const renderTasks = () => {
         tasksContainer.innerHTML = "";
         const categoryTasks = tasks.filter(
-          (task) =>
-            task.category.toLowerCase() === selectedCategory.title.toLowerCase()
+            (task) =>
+             task.category.toLowerCase() === selectedCategory.title.toLowerCase()
         );
         // if no task for selected category
         if (categoryTasks.length === 0) {
@@ -222,33 +235,39 @@ const renderTasks = () => {
                     renderTasks();
                 });
 
-            div.innerHTML = `<div class="delete">
-            <i class='bx bxs-trash' id="bxs-trash"></i>
-        </div>`;
-            label.innerHTML += `<span class="checkmark">
-            <i class='bx bx-check' id="bx-check"></i>
-        </span>
-        <p>${task.task}</p>`;
+                div.innerHTML = `<div class="delete">
+                    <i class='bx bxs-trash' id="bxs-trash"></i>
+                </div>`;
+                
+                label.innerHTML += `<span class="checkmark">
+                    <i class='bx bx-check' id="bx-check"></i>
+                </span>
+                <p>${task.task}</p>`;
 
-        label.prepend(checkbox);
-        div.prepend(label);
-        tasksContainer.appendChild(div);
+                label.prepend(checkbox);
+                div.prepend(label);
+                tasksContainer.appendChild(div);
+            });
 
         //delete functionality
-        const deleteBtn = div.querySelector(".delete");
-        deleteBtn.addEventListener("click", () => {
-            const index = tasks.findIndex((t) => t.id === task.id);
-
+        // const deleteBtn = div.querySelector(".delete");
+        // deleteBtn.addEventListener("click", () => {
+        //     const index = tasks.findIndex((t) => t.id === task.id);
+             tasksContainer.querySelectorAll('.delete').forEach(deleteBtn => {
+                 deleteBtn.addEventListener("click", (event) => {
+                     const taskId = parseInt(event.target.parentElement.parentElement.querySelector('input[type="checkbox"]').id);
+                     const index = tasks.findIndex((t) => t.id === taskId);
             // remove the clicked task
-            tasks.splice(index, 1);
-            saveLocal();
-            renderTasks();
-        });
-    });
+                     tasks.splice(index, 1);
+                     saveLocal();
+                     renderTasks();
+                 });
+              });
+          }
 
     renderCategories();
     calculateTotal();
-    };
+  
   };
 
 // save and get tasks from local storage
@@ -270,7 +289,6 @@ const getLocal = () => {
 const categorySelect = document.querySelector("#category-select");
 const cancelBtn = document.querySelector(".cancel-btn");
 const addBtn = document.querySelector(".add-btn");
-
 const taskInput = document.querySelector("#task-input");
 
 cancelBtn.addEventListener("click", toggleAddTaskForm);
@@ -301,29 +319,41 @@ categories.forEach((category) => {
   option.value = category.title.toLocaleLowerCase();
   option.textContent = category.title;
   categorySelect.appendChild(option);
-})
+});
 //these all are already stored tasks
 getLocal();
 calculateTotal();
 renderTasks();
 
-// const recognition = new webkitSpeechRecognition(); // Initialize SpeechRecognition object
-// recognition.continuous = false; // Set continuous to false to stop recognition after a single result
+// Function to handle speech recognition
+const startSpeechRecognition = () => {
+  const recognition = new window.webkitSpeechRecognition(); // Create speech recognition instance
+  recognition.continuous = false; // Don't continuously listen for speech
+  recognition.lang = 'en-US'; // Set language to English (US)
 
-// const startSpeechRecognition = () => {
-//   recognition.start(); // Start speech recognition
-// }
+  // When speech is recognized, set the value of the task input field
+  recognition.onresult = (event) => {
+      const speechResult = event.results[0][0].transcript; // Get the recognized speech
+      taskInput.value = speechResult; // Set the task input value to the recognized speech
+  };
 
-// // Event listener for when speech recognition returns a result
-// recognition.onresult = (event) => {
-//   const transcript = event.results[0][0].transcript.trim(); // Get the recognized text
-//   taskInput.value = transcript; // Set the recognized text to the task input field
-// }
+  // If there's an error, log it
+  recognition.onerror = (event) => {
+      console.error('Speech recognition error:', event.error);
+  };
 
-// // Event listener for when speech recognition ends
-// recognition.onend = () => {
-//   recognition.stop(); // Stop speech recognition
-// }
+  // Start speech recognition
+  recognition.start();
 
-// // Event listener for the add task button to start speech recognition
-// addTaskBtn.addEventListener("click", startSpeechRecognition);
+  // Add the "clicked" class to trigger the animation
+    speechIcon.classList.add('clicked');
+
+    // Remove the "clicked" class after a delay to allow for animation to complete
+    setTimeout(() => {
+        speechIcon.classList.remove('clicked');
+    }, 500); // Adjust the delay to match the duration of the animation
+};
+
+// Event listener for clicking the speech icon
+const speechIcon = document.getElementById('speech-icon');
+speechIcon.addEventListener('click', startSpeechRecognition);
