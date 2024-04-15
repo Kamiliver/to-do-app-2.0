@@ -5,11 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="main.css">
+    <!-- <link rel="stylesheet" href="background.css"> -->
+
+    <!-- <script src="background.js" defer></script> -->
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Plan-A</title>
 </head>
 <body>
+<div id="back"></div>
+    <div class="square"></div>
+    <div class="square"></div>
+    <div class="square"></div>
+    <div class="square"></div>
+    <div class="square"></div>
+
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+
+    <div class="triangle"></div>
+    <div class="triangle"></div>
+    <div class="triangle"></div>
+    <div class="triangle"></div>
+    <div class="triangle"></div>
+</div>
+    <!-- <iframe src="background.html" frameborder="0" scrolling="auto" width="100%" height="500px"></iframe> -->
+
 
     <div class="wrapper show-category">
         <div class="screen-backdrop"></div>
@@ -165,9 +189,7 @@
                     <input type="text" id="task-input" placeholder="Add a new task..." required>
                     <i class="bx bx-microphone" id="speech-icon"></i>
                 </div>
-                
-                <!-- <input type="text" id="task-input" required/><i class="bx bx-microphone" id="speech-icon"></i>
-            </div> -->
+            </div>
             <div class="input-group">
                 <label for="category-select">Category</label>
                 <select name="" id="category-select"></select>
@@ -179,7 +201,31 @@
         </div>
     </div>
 
-    
+    <!-- pomodor screen -->
+    <!-- <div class="container">
+        <h1>pomodoro</h1>
+
+        <div class="painel">
+            <p id="work">work</p>
+            <p id="break">break</p>
+        </div>
+
+        <div class="timer">
+            <div class="circle">
+                <div class="time">
+                    <p id="minutes"></p>
+                    <p>:</p>
+                    <p id="seconds"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="start" onclick="start()"><i class="fa-solid fa-play"></i></button>
+
+            <a id="reset" href="./"><i class="fa-solid fa-arrow-rotate-left"></i></a>
+        </div>
+    </div> -->
 
 
     <script src="main.js"></script>
